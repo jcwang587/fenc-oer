@@ -29,6 +29,7 @@ e5_fe4_oo = -1262.785617
 e6_fe5_oo = -1262.627127
 oh = -75.977708
 h2o = -76.448791
+o2 = -150.311825
 
 a1a2 = electrochem_potential(a1_fe2, a2_fe3)
 b1b2 = electrochem_potential(b1_fe2_oh, b2_fe3_oh)
@@ -72,3 +73,19 @@ vertical = [a1b1, b2c2, c3d3, d4e4, a2b2, b3c3, c4d4, d5e5]
 print("a1b1, b2c2, c3d3, d4e4, a2b2, b3c3, c4d4, d5e5")
 # keep 0 decimal places
 print(np.round(vertical))
+
+a1b2chem = chemical_energy(a1_fe2+oh, b2_fe3_oh)
+b2c3chem = chemical_energy(b2_fe3_oh+oh, c3_fe4_o+h2o) + a1b2chem
+c3d4chem = chemical_energy(c3_fe4_o+oh, d4_fe3_ooh) + b2c3chem
+d4e5chem = chemical_energy(d4_fe3_ooh+oh, e5_fe4_oo+h2o) + c3d4chem
+e5a1chem = chemical_energy(e5_fe4_oo, a1_fe2+o2) + d4e5chem
+a2b3chem = chemical_energy(a2_fe3+oh, b3_fe4_oh)
+b3c4chem = chemical_energy(b3_fe4_oh+oh, c4_fe5_o+h2o) + a2b3chem
+c4d5chem = chemical_energy(c4_fe5_o+oh, d5_fe4_ooh) + b3c4chem
+d5e6chem = chemical_energy(d5_fe4_ooh+oh, e6_fe5_oo+h2o) + c4d5chem
+e6a2chem = chemical_energy(e6_fe5_oo, a2_fe3+o2) + d5e6chem
+
+diagonalchem = [a1b2chem, b2c3chem, c3d4chem, d4e5chem, e5a1chem, a2b3chem, b3c4chem, c4d5chem, d5e6chem, e6a2chem]
+print("a1b2chem, b2c3chem, c3d4chem, d4e5chem, e5a1chem, a2b3chem, b3c4chem, c4d5chem, d5e6chem, e6a2chem")
+# keep 2 decimal places
+print(np.round(diagonalchem, 2))
