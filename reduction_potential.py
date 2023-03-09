@@ -89,3 +89,21 @@ diagonalchem = [a1b2chem, b2c3chem, c3d4chem, d4e5chem, e5a1chem, a2b3chem, b3c4
 print("a1b2chem, b2c3chem, c3d4chem, d4e5chem, e5a1chem, a2b3chem, b3c4chem, c4d5chem, d5e6chem, e6a2chem")
 # keep 2 decimal places
 print(np.round(diagonalchem, 2))
+
+applied_potential = 1.23
+applied_energy = applied_potential/kjmol2v
+a1b2chem_ae = a1b2chem - applied_energy
+b2c3chem_ae = b2c3chem - 2 * applied_energy
+c3d4chem_ae = c3d4chem - 3 * applied_energy
+d4e5chem_ae = d4e5chem - 4 * applied_energy
+e5a1chem_ae = e5a1chem - 5 * applied_energy
+a2b3chem_ae = a2b3chem - applied_energy
+b3c4chem_ae = b3c4chem - 2 * applied_energy
+c4d5chem_ae = c4d5chem - 3 * applied_energy
+d5e6chem_ae = d5e6chem - 4 * applied_energy
+e6a2chem_ae = e6a2chem - 5 * applied_energy
+
+diagonalchem_ae = [a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae]
+print("a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae")
+# keep 2 decimal places
+print(np.round(diagonalchem_ae, 2))
