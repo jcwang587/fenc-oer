@@ -1,5 +1,6 @@
 import numpy as np
 
+ev2kjmol = 96.485
 ha2kjmol = 2625.4996
 kjmol2v = 1000 / 96485.33289
 rhe = 3.43
@@ -74,34 +75,34 @@ print("a1b1, b2c2, c3d3, d4e4, a2b2, b3c3, c4d4, d5e5")
 # keep 0 decimal places
 print(np.round(vertical))
 
-a1b2chem = chemical_energy(a1_fe2+oh, b2_fe3_oh)
-b2c3chem = chemical_energy(b2_fe3_oh+oh, c3_fe4_o+h2o) + a1b2chem
-c3d4chem = chemical_energy(c3_fe4_o+oh, d4_fe3_ooh) + b2c3chem
-d4e5chem = chemical_energy(d4_fe3_ooh+oh, e5_fe4_oo+h2o) + c3d4chem
-e5a1chem = chemical_energy(e5_fe4_oo, a1_fe2+o2) + d4e5chem
-a2b3chem = chemical_energy(a2_fe3+oh, b3_fe4_oh)
-b3c4chem = chemical_energy(b3_fe4_oh+oh, c4_fe5_o+h2o) + a2b3chem
-c4d5chem = chemical_energy(c4_fe5_o+oh, d5_fe4_ooh) + b3c4chem
-d5e6chem = chemical_energy(d5_fe4_ooh+oh, e6_fe5_oo+h2o) + c4d5chem
-e6a2chem = chemical_energy(e6_fe5_oo, a2_fe3+o2) + d5e6chem
+a1b2freee = a1b2 * ev2kjmol
+b2c3freee = b2c3 * ev2kjmol
+c3d4freee = c3d4 * ev2kjmol
+d4e5freee = d4e5 * ev2kjmol
+e5a1freee = chemical_energy(e5_fe4_oo, a1_fe2+o2)
+a2b3freee = a2b3 * ev2kjmol
+b3c4freee = b3c4 * ev2kjmol
+c4d5freee = c4d5 * ev2kjmol
+d5e6freee = d5e6 * ev2kjmol
+e6a2freee = chemical_energy(e6_fe5_oo, a2_fe3+o2)
 
-diagonalchem = [a1b2chem, b2c3chem, c3d4chem, d4e5chem, e5a1chem, a2b3chem, b3c4chem, c4d5chem, d5e6chem, e6a2chem]
-print("a1b2chem, b2c3chem, c3d4chem, d4e5chem, e5a1chem, a2b3chem, b3c4chem, c4d5chem, d5e6chem, e6a2chem")
+diagonalfreee = [a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee]
+print("a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee")
 # keep 2 decimal places
-print(np.round(diagonalchem, 2))
+print(np.round(diagonalfreee, 2))
 
 applied_potential = 1.23
-applied_energy = applied_potential/kjmol2v
-a1b2chem_ae = a1b2chem - applied_energy
-b2c3chem_ae = b2c3chem - 2 * applied_energy
-c3d4chem_ae = c3d4chem - 3 * applied_energy
-d4e5chem_ae = d4e5chem - 4 * applied_energy
-e5a1chem_ae = e5a1chem - 5 * applied_energy
-a2b3chem_ae = a2b3chem - applied_energy
-b3c4chem_ae = b3c4chem - 2 * applied_energy
-c4d5chem_ae = c4d5chem - 3 * applied_energy
-d5e6chem_ae = d5e6chem - 4 * applied_energy
-e6a2chem_ae = e6a2chem - 5 * applied_energy
+applied_energy = applied_potential*ev2kjmol
+a1b2chem_ae = a1b2freee - applied_energy
+b2c3chem_ae = b2c3freee - applied_energy*2
+c3d4chem_ae = c3d4freee - applied_energy*3
+d4e5chem_ae = d4e5freee - applied_energy*4
+e5a1chem_ae = e5a1freee - applied_energy*5
+a2b3chem_ae = a2b3freee - applied_energy
+b3c4chem_ae = b3c4freee - applied_energy*2
+c4d5chem_ae = c4d5freee - applied_energy*3
+d5e6chem_ae = d5e6freee - applied_energy*4
+e6a2chem_ae = e6a2freee - applied_energy*5
 
 diagonalchem_ae = [a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae]
 print("a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae")
