@@ -76,15 +76,15 @@ print("a1b1, b2c2, c3d3, d4e4, a2b2, b3c3, c4d4, d5e5")
 print(np.round(vertical))
 
 a1b2freee = a1b2 * ev2kjmol
-b2c3freee = b2c3 * ev2kjmol
-c3d4freee = c3d4 * ev2kjmol
-d4e5freee = d4e5 * ev2kjmol
-e5a1freee = chemical_energy(e5_fe4_oo, a1_fe2+o2)
+b2c3freee = b2c3 * ev2kjmol + a1b2freee
+c3d4freee = c3d4 * ev2kjmol + b2c3freee
+d4e5freee = d4e5 * ev2kjmol + c3d4freee
+e5a1freee = chemical_energy(e5_fe4_oo, a1_fe2+o2) + d4e5freee
 a2b3freee = a2b3 * ev2kjmol
-b3c4freee = b3c4 * ev2kjmol
-c4d5freee = c4d5 * ev2kjmol
-d5e6freee = d5e6 * ev2kjmol
-e6a2freee = chemical_energy(e6_fe5_oo, a2_fe3+o2)
+b3c4freee = b3c4 * ev2kjmol + a2b3freee
+c4d5freee = c4d5 * ev2kjmol + b3c4freee
+d5e6freee = d5e6 * ev2kjmol + c4d5freee
+e6a2freee = chemical_energy(e6_fe5_oo, a2_fe3+o2) + d5e6freee
 
 diagonalfreee = [a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee]
 print("a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee")
@@ -97,12 +97,12 @@ a1b2chem_ae = a1b2freee - applied_energy
 b2c3chem_ae = b2c3freee - applied_energy*2
 c3d4chem_ae = c3d4freee - applied_energy*3
 d4e5chem_ae = d4e5freee - applied_energy*4
-e5a1chem_ae = e5a1freee - applied_energy*5
+e5a1chem_ae = e5a1freee - applied_energy*4
 a2b3chem_ae = a2b3freee - applied_energy
 b3c4chem_ae = b3c4freee - applied_energy*2
 c4d5chem_ae = c4d5freee - applied_energy*3
 d5e6chem_ae = d5e6freee - applied_energy*4
-e6a2chem_ae = e6a2freee - applied_energy*5
+e6a2chem_ae = e6a2freee - applied_energy*4
 
 diagonalchem_ae = [a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae]
 print("a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae")
