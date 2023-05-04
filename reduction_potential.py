@@ -117,3 +117,4 @@ print("a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, e5b2chem
       "a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae, e6b3chem_ae")
 # keep 2 decimal places
 print(np.round(diagonalchem_ae, 2))
+
