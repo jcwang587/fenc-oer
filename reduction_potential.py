@@ -88,12 +88,16 @@ d5e6freee = d5e6 * ev2kjmol + c4d5freee
 e6a2freee = chemical_energy(e6_fe5_oo, a2_fe3+o2) + d5e6freee
 e6b3freee = chemical_energy(e6_fe5_oo+oh, b3_fe4_oh+o2) + d5e6freee
 
-diagonalfreee = [a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, e5b2freee,
-                 a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee, e6b3freee]
+diagonalfreee_kjmol = [a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, e5b2freee,
+                       a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee, e6b3freee]
 print("a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, e5b2freee,"
       "a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee, e6b3freee")
 # keep 2 decimal places
-print(np.round(diagonalfreee, 2))
+print(np.round(diagonalfreee_kjmol, 2))
+# change to eV
+diagonalfreee_ev = np.array(diagonalfreee_kjmol) / ev2kjmol
+# keep 2 decimal places
+print(np.round(diagonalfreee_ev, 2))
 
 applied_potential = 1.23
 applied_energy = applied_potential*ev2kjmol
@@ -111,10 +115,14 @@ e6a2chem_ae = e6a2freee - applied_energy*4
 e6b3chem_ae = e6b3freee - applied_energy*4
 
 
-diagonalchem_ae = [a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, e5b2chem_ae,
-                   a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae, e6b3chem_ae]
+diagonalchem_ae_kjmol = [a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, e5b2chem_ae,
+                         a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae, e6b3chem_ae]
 print("a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, e5b2chem_ae,"
       "a2b3chem_ae, b3c4chem_ae, c4d5chem_ae, d5e6chem_ae, e6a2chem_ae, e6b3chem_ae")
 # keep 2 decimal places
-print(np.round(diagonalchem_ae, 2))
+print(np.round(diagonalchem_ae_kjmol, 2))
+# change to eV
+diagonalchem_ae_ev = np.array(diagonalchem_ae_kjmol) / ev2kjmol
+# keep 2 decimal places
+print(np.round(diagonalchem_ae_ev, 2))
 
