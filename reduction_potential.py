@@ -106,13 +106,13 @@ b2c3chem_ae = b2c3freee - applied_energy*2
 c3d4chem_ae = c3d4freee - applied_energy*3
 d4e5chem_ae = d4e5freee - applied_energy*4
 e5a1chem_ae = e5a1freee - applied_energy*4
-e5b2chem_ae = e5b2freee - applied_energy*4
+e5b2chem_ae = e5b2freee - applied_energy*5
 a2b3chem_ae = a2b3freee - applied_energy
 b3c4chem_ae = b3c4freee - applied_energy*2
 c4d5chem_ae = c4d5freee - applied_energy*3
 d5e6chem_ae = d5e6freee - applied_energy*4
 e6a2chem_ae = e6a2freee - applied_energy*4
-e6b3chem_ae = e6b3freee - applied_energy*4
+e6b3chem_ae = e6b3freee - applied_energy*5
 
 
 diagonalchem_ae_kjmol = [a1b2chem_ae, b2c3chem_ae, c3d4chem_ae, d4e5chem_ae, e5a1chem_ae, e5b2chem_ae,
