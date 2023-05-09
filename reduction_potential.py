@@ -80,13 +80,13 @@ b2c3freee = b2c3 * ev2kjmol + a1b2freee
 c3d4freee = c3d4 * ev2kjmol + b2c3freee
 d4e5freee = d4e5 * ev2kjmol + c3d4freee
 e5a1freee = chemical_energy(e5_fe4_oo, a1_fe2+o2) + d4e5freee
-e5b2freee = chemical_energy(e5_fe4_oo+oh, b2_fe3_oh+o2) + d4e5freee
+e5b2freee = e5a1freee + a1b2freee
 a2b3freee = a2b3 * ev2kjmol
 b3c4freee = b3c4 * ev2kjmol + a2b3freee
 c4d5freee = c4d5 * ev2kjmol + b3c4freee
 d5e6freee = d5e6 * ev2kjmol + c4d5freee
 e6a2freee = chemical_energy(e6_fe5_oo, a2_fe3+o2) + d5e6freee
-e6b3freee = chemical_energy(e6_fe5_oo+oh, b3_fe4_oh+o2) + d5e6freee
+e6b3freee = e5b2freee + a2b3freee
 
 diagonalfreee_kjmol = [a1b2freee, b2c3freee, c3d4freee, d4e5freee, e5a1freee, e5b2freee,
                        a2b3freee, b3c4freee, c4d5freee, d5e6freee, e6a2freee, e6b3freee]
